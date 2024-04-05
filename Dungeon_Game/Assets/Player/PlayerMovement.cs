@@ -15,15 +15,20 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
             {
-                navMeshAgent.destination = hit.point;
-            } 
+                Vector3 lookPos = hit.point - transform.position;
+                lookPos.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = rotation; 
+            }
+        if (Input.GetMouseButton(0))
+        {
+            navMeshAgent.destination = hit.point;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
