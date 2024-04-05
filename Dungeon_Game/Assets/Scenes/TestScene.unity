@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8b5f0662926d147a6737c2486e78e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 3432561012156467776, guid: 1ec38c272b7fb63408235f71a8bf465e, type: 3}
+  Prefab: {fileID: 6162997067912889262, guid: d2206e5a578864d4c8e571913aef5d3e, type: 3}
   range: {x: 100, y: 100}
   number: 100
 --- !u!4 &472362104
@@ -788,6 +788,10 @@ PrefabInstance:
     - target: {fileID: 162860, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_Name
       value: Character_Hero_Knight_Male
+      objectReference: {fileID: 0}
+    - target: {fileID: 162860, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 487758, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_LocalPosition.x

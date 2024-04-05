@@ -4928,7 +4928,7 @@ GameObject:
   - component: {fileID: -2334243445692247638}
   m_Layer: 0
   m_Name: Spell_Fireball
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4961,7 +4961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8568f6c46b9314547b4371123d0be896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 0
+  damageAmount: 5
   manaCost: 0
   speed: 15
   lifetime: 5
