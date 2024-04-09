@@ -42,6 +42,7 @@ public class EnemyHelathManager : MonoBehaviour
         if(other.gameObject.tag == "Spell")
         {
             ReciveDamge(other.gameObject.GetComponent<Spell>().damageAmount);
+            Destroy(other.gameObject);
         }
     }
 }

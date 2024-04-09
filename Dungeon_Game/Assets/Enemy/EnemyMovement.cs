@@ -47,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            navMeshAgent.speed = 1;
+            navMeshAgent.speed = 2;
             navMeshAgent.isStopped = false;
             animator.SetBool("Attack",false);
         }

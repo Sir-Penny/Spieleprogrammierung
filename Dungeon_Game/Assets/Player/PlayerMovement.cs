@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Fireball;
     public GameObject spellCastPoint;
     private Animator animator;
+    private bool spellAniamtion = false;
+    public bool throwSpell=false;
 
     void Start()
     {
@@ -24,37 +26,38 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
+            if (Input.GetMouseButton(0)&&throwSpell==false)
+            {
+                navMeshAgent.isStopped = false;
+                navMeshAgent.destination = hit.point;
+            }
+        }
+        if (navMeshAgent.remainingDistance < 0.1)
+        {
+            animator.SetBool("WalkingPlayer", false);
+        }
+        else
+        {
+            animator.SetBool("WalkingPlayer", true);
+        }
+
+        //TODO add Cast time intad of using animamation Events
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            spellAniamtion = true;
+            navMeshAgent.destination = transform.position;
+            navMeshAgent.isStopped = true;
+            animator.SetBool("Throwing", true);
+            animator.SetBool("WalkingPlayer", false);
             Vector3 lookPos = hit.point - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = rotation;
         }
-        print(navMeshAgent.isStopped);
-        
-        if (navMeshAgent.remainingDistance < 0.1)
+        if (throwSpell)
         {
-            animator.SetBool("WalkingPlayer", false);
-            //print("WalkingPlayer false");
-        }
-        else
-        {
-            animator.SetBool("WalkingPlayer", true);
-            //print("WalkingPlayer true");
-        }
-            if (Input.GetMouseButton(0))
-        {
-            navMeshAgent.destination = hit.point;
-        }
-
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //navMeshAgent.speed = 0;
-            //navMeshAgent.isStopped = true;
-            //animator.SetBool("WalkingPlayer", false);
-            animator.SetTrigger("Throwing");
-            print("Throw true");
-            Instantiate(Fireball, spellCastPoint.transform.position, spellCastPoint.transform.rotation);
+            Instantiate(Fireball, spellCastPoint.transform.position, transform.rotation);
+            throwSpell = false;
         }
     }
 }
