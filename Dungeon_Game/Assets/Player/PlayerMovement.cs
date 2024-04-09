@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (Input.GetMouseButton(0)&&throwSpell==false)
+            if (Input.GetMouseButton(0)&& spellAniamtion == false)
             {
                 navMeshAgent.isStopped = false;
                 navMeshAgent.destination = hit.point;
@@ -37,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("WalkingPlayer", false);
         }
         else
-        {
-            animator.SetBool("WalkingPlayer", true);
+        {animator.SetBool("WalkingPlayer", true);
+            
         }
 
         //TODO add Cast time intad of using animamation Events
@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Instantiate(Fireball, spellCastPoint.transform.position, transform.rotation);
             throwSpell = false;
+            spellAniamtion = false;
         }
     }
 }
