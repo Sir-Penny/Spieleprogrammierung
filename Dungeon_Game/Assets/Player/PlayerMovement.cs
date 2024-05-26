@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private bool spellAniamtion = false;
     public bool throwSpell=false;
+    public LayerMask mouseInputIgnoreLayers;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit,Mathf.Infinity, ~mouseInputIgnoreLayers))
         {
             if (Input.GetMouseButton(0)&& spellAniamtion == false)
             {

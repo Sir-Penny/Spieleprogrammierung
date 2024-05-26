@@ -14,8 +14,8 @@ public class EnemyHelathManager : MonoBehaviour
     private void Awake()
     {
         playerCam = Camera.main;
-        maxHealth = enemyStats.Health;
-        slider.value = enemyStats.Health;
+        maxHealth = enemyStats.health;
+        slider.value = enemyStats.health;
         HelthBar.transform.LookAt(playerCam.transform);
     }
     private void Update()
@@ -25,14 +25,14 @@ public class EnemyHelathManager : MonoBehaviour
 
     public void UpdateHelthBar()
     {
-        slider.value = enemyStats.Health/maxHealth;
+        slider.value = enemyStats.health/maxHealth;
     }
 
     public void ReciveDamge(float damage)
     {
-        enemyStats.Health -= damage;
+        enemyStats.health -= damage;
         UpdateHelthBar();
-        if (enemyStats.Health <= 0)
+        if (enemyStats.health <= 0)
         {
             Destroy(this.gameObject);
         }

@@ -14,10 +14,10 @@ TagManager:
   - UI
   - PlayerSpell
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Terrain
+  - Enemy
+  - NotWalkable
+  - Wall
   - 
   - 
   - 

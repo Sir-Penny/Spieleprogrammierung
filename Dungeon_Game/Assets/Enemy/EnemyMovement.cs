@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemyStats enemyStats;
     private NavMeshAgent navMeshAgent;
     private Transform player;
     private Animator animator;
@@ -14,25 +15,28 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
+        navMeshAgent.speed = enemyStats.moveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
-            return;
-        if (!player.gameObject.activeSelf)
+        if (enemyStats.foundEnemy)
         {
-            navMeshAgent.isStopped = true;
-            animator.SetBool("walking",false);
+            if (player == null)
+                return;
+            if (!player.gameObject.activeSelf)
+            {
+                navMeshAgent.isStopped = true;
+                animator.SetBool("walking", false);
+            }
+            else
+            {
+                navMeshAgent.isStopped = false;
+                navMeshAgent.destination = player.position;
+                animator.SetBool("walking", true);
+            }
         }
-        else
-        {
-            navMeshAgent.isStopped = false;
-            navMeshAgent.destination = player.position;
-            animator.SetBool("walking", true);
-        }
-        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -47,7 +51,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            navMeshAgent.speed = 2;
+            navMeshAgent.speed = enemyStats.moveSpeed;
             navMeshAgent.isStopped = false;
             animator.SetBool("Attack",false);
         }
