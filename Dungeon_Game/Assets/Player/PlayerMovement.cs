@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject spellCastPoint;
     private Animator animator;
     private bool spellAniamtion = false;
+    private bool splitSpellAnimation = false;
+    private bool bombAnimation = false;
     public bool throwSpell=false;
     public LayerMask mouseInputIgnoreLayers;
 
@@ -42,10 +44,34 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        //TODO add Cast time intad of using animamation Events
+        //TODO add Cast time instead of using animamation Events
         if (Input.GetKeyDown(KeyCode.Q))
         {
             spellAniamtion = true;
+            navMeshAgent.destination = transform.position;
+            navMeshAgent.isStopped = true;
+            animator.SetBool("Throwing", true);
+            animator.SetBool("WalkingPlayer", false);
+            Vector3 lookPos = hit.point - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = rotation;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            splitSpellAnimation = true;
+            navMeshAgent.destination = transform.position;
+            navMeshAgent.isStopped = true;
+            animator.SetBool("Throwing", true);
+            animator.SetBool("WalkingPlayer", false);
+            Vector3 lookPos = hit.point - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = rotation;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            bombAnimation = true;
             navMeshAgent.destination = transform.position;
             navMeshAgent.isStopped = true;
             animator.SetBool("Throwing", true);
