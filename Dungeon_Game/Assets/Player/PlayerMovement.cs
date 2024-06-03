@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     public Camera playerCame;
     public GameObject Fireball;
+    public GameObject Firering;
     public GameObject spellCastPoint;
     private Animator animator;
     private bool spellAniamtion = false;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool bombAnimation = false;
     public bool throwSpell=false;
     public LayerMask mouseInputIgnoreLayers;
+    public GameObject spell;
 
     void Start()
     {
@@ -44,9 +46,10 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        //TODO add Cast time instead of using animamation Events
+        //TODO add Cast time instead of using animation Events
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            spell = Fireball;
             spellAniamtion = true;
             navMeshAgent.destination = transform.position;
             navMeshAgent.isStopped = true;
@@ -59,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
+            spell = Firering;
             splitSpellAnimation = true;
             navMeshAgent.destination = transform.position;
             navMeshAgent.isStopped = true;
@@ -83,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (throwSpell)
         {
-            Instantiate(Fireball, spellCastPoint.transform.position, transform.rotation);
+            Instantiate(spell, spellCastPoint.transform.position, transform.rotation);
             throwSpell = false;
             spellAniamtion = false;
         }
