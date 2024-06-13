@@ -21,12 +21,13 @@ public class TargetFinding : MonoBehaviour
     {
         if (playerInRange&&!enemyStats.foundEnemy)
         {
-            Vector3 originPosition = transform.position;
-            Vector3 targetPosition = enemy.transform.position;
-            Vector3 direction = targetPosition - originPosition;
+            Vector3 originPosition = transform.position+Vector3.up;
+            Vector3 targetPosition = enemy.transform.position + Vector3.up;
+            Vector3 direction = (targetPosition - originPosition);
             if (Physics.Raycast(originPosition, direction, out RaycastHit hit, enemyStats.targetRange,~layersToIgnore))
             {
-                if (hit.transform.gameObject.layer != 8) {
+                Debug.DrawRay(originPosition, direction, Color.green, 0.1f, false);
+                if (hit.transform.gameObject.layer == 7) {
                     enemyStats.foundEnemy = true;
                 }
             }

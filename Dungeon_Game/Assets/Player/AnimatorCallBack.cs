@@ -13,7 +13,6 @@ public class AnimatorCallBack : MonoBehaviour
     }
     public void throwEnd()
     {
-        print("test");
         playerMovement.throwSpell = true;
     }
 }

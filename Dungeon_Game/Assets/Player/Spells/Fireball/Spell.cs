@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    public float damageAmount;
-    public float manaCost;
     public float speed;
     public float lifetime;
 
@@ -20,8 +18,8 @@ public class Spell : MonoBehaviour
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
      }
 
-     /*private void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
      {
          Destroy(this.gameObject);
-     }*/
+     }
 }
