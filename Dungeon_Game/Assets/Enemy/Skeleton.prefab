@@ -303,9 +303,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6408223427198465730}
+  - component: {fileID: 2504051898172174964}
   m_Layer: 9
   m_Name: Hand_R
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,6 +329,27 @@ Transform:
   - {fileID: 1156847093619182403}
   m_Father: {fileID: 7769822663754673579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2504051898172174964
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770182403232455675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 28.018778, y: 8.532919, z: 17.86556}
+  m_Center: {x: 9.009383, y: 1.250437, z: -1.889104}
 --- !u!1 &787112213276847857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,7 +1498,7 @@ GameObject:
   - component: {fileID: 6468408180009342800}
   - component: {fileID: 7980621245757957887}
   - component: {fileID: 4235032783725840004}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: TragetFinding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1534,7 +1556,7 @@ MonoBehaviour:
   enemyStats: {fileID: 1968498241918250094}
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4928
 --- !u!1 &2336729126451175565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,9 +1598,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5477695509329944116}
+  - component: {fileID: 5625609154467165299}
   m_Layer: 9
   m_Name: Hand_L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1601,6 +1624,27 @@ Transform:
   - {fileID: 2705830978540526758}
   m_Father: {fileID: 6979451869139396783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5625609154467165299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373821208737324816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 28.018778, y: 8.532919, z: 17.86556}
+  m_Center: {x: -9.009383, y: -1.2504369, z: 1.8891038}
 --- !u!1 &2546502359650167465
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,9 +3783,6 @@ MonoBehaviour:
   moveSpeed: 2
   attackDamage: 5
   foundEnemy: 0
-  EnemyHelathManager: {fileID: 2934187599004785715}
-  enemyMovement: {fileID: 2745267960097591702}
-  targetFinding: {fileID: 4235032783725840004}
 --- !u!114 &2934187599004785715
 MonoBehaviour:
   m_ObjectHideFlags: 0

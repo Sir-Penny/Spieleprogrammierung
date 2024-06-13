@@ -4926,6 +4926,7 @@ GameObject:
   - component: {fileID: 2331593508995106779}
   - component: {fileID: 3782051406615072365}
   - component: {fileID: -2334243445692247638}
+  - component: {fileID: -9108522081314053878}
   m_Layer: 6
   m_Name: Spell_Fireball
   m_TagString: Spell
@@ -4961,8 +4962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8568f6c46b9314547b4371123d0be896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 5
-  manaCost: 0
   speed: 15
   lifetime: 5
 --- !u!135 &3782051406615072365
@@ -4980,7 +4979,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5013,3 +5012,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-9108522081314053878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899966837999452304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc80b68da0826404287d74285a4ab0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 5
+  hitEnemys: []
