@@ -20,7 +20,6 @@ public class Spell : MonoBehaviour
 
      private void OnTriggerEnter(Collider other)
      {
-        print(other.gameObject);
          Destroy(this.gameObject);
      }
 }

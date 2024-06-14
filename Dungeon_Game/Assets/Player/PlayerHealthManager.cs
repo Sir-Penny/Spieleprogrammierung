@@ -39,9 +39,14 @@ public class PlayerHealthManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject);
         if (other.gameObject.tag == "Enemy")
         {
             ReciveDamge(other.gameObject.transform.root.GetComponent<EnemyStats>().damage);
+        }
+        if (other.gameObject.tag == "EnemySpell")
+        {
+            ReciveDamge(other.gameObject.transform.root.GetComponent<SpellDamage>().Damage);
         }
     }
 }

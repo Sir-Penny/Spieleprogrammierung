@@ -67,9 +67,10 @@ public class EnemyMovement : MonoBehaviour
         if (fireAttack)
         {
             fireAttack = false;
-            Instantiate(attack,CastPoint.transform.position, transform.rotation);
-            //fire attack
-            print("attack");
+            Vector3 lookPos = player.position - CastPoint.transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            Instantiate(attack,CastPoint.transform.position, rotation);
         }
     }
     private void OnTriggerEnter(Collider other)
