@@ -9,16 +9,25 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform player;
     private Animator animator;
-    // Start is called before the first frame update
+    public SphereCollider attackRange;
+    public bool inAttackRange=false;
+    public bool attackAnimation=false;
+    public GameObject CastPoint;
+
+    public GameObject attack;
+    public bool fireAttack;
+
+    private bool init=false;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         navMeshAgent.speed = enemyStats.moveSpeed;
+        attackRange.radius = enemyStats.attackRange;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (enemyStats.foundEnemy)
@@ -32,10 +41,35 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                navMeshAgent.isStopped = false;
                 navMeshAgent.destination = player.position;
-                animator.SetBool("walking", true);
+                if (!init)
+                {
+                    animator.SetBool("walking", true);
+                    init = true;
+                }
             }
+        }
+        if(inAttackRange && !attackAnimation)
+        {
+            attackAnimation = true;
+            animator.SetTrigger("attack");
+            Vector3 lookPos = player.position - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = rotation;
+        }
+        if(!inAttackRange && !attackAnimation && navMeshAgent.isStopped)
+        {
+            animator.SetBool("walking", true);
+            navMeshAgent.speed = enemyStats.moveSpeed;
+            navMeshAgent.isStopped = false;
+        }
+        if (fireAttack)
+        {
+            fireAttack = false;
+            Instantiate(attack,CastPoint.transform.position, transform.rotation);
+            //fire attack
+            print("attack");
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -44,16 +78,15 @@ public class EnemyMovement : MonoBehaviour
         {
             navMeshAgent.speed = 0;
             navMeshAgent.isStopped = true;
-            animator.SetBool("Attack",true);
+            inAttackRange = true;
+            animator.SetBool("walking", false);
         }
     }
     public void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            navMeshAgent.speed = enemyStats.moveSpeed;
-            navMeshAgent.isStopped = false;
-            animator.SetBool("Attack",false);
+            inAttackRange = false;
         }
     }
 }
