@@ -15,9 +15,10 @@ public class EnemyMovement : MonoBehaviour
     public GameObject CastPoint;
 
     public EnemySpellPrefab[] enemySpellPrefab;
-    public GameObject attack;
+    public EnemySpellPrefab attack;
     public bool fireAttack;
     public Collider AttackCollider;
+    public Quaternion attackRotation;
 
     private bool init=false;
 
@@ -28,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         navMeshAgent.speed = enemyStats.moveSpeed;
         attackRange.radius = enemySpellPrefab[0].attackRange;
-        attack = enemySpellPrefab[0].spell;
+        attack = enemySpellPrefab[0];
     }
 
     void Update()
@@ -49,18 +50,29 @@ public class EnemyMovement : MonoBehaviour
                 {
                     animator.SetBool("walking", true);
                     init = true;
+                    if (enemySpellPrefab.Length > 1)
+                    {
+                        StartCoroutine(UseOtherSpell());
+                    }
                 }
             }
         }
         if(inAttackRange && !attackAnimation)
         {
+            //print("attack");
             attackAnimation = true;
             animator.SetTrigger("attack");
             Vector3 lookPos = player.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = rotation;
-            if (AttackCollider)
+            if (attack.enemySpellCastType != EnemySpellCastType.Meele)
+            {
+                lookPos = player.position - CastPoint.transform.position;
+                lookPos.y = 0;
+                attackRotation = Quaternion.LookRotation(lookPos);
+            }
+            if (AttackCollider && attack.enemySpellCastType == EnemySpellCastType.Meele)
             {
                 AttackCollider.enabled = true;
             }
@@ -74,10 +86,7 @@ public class EnemyMovement : MonoBehaviour
         if (fireAttack)
         {
             fireAttack = false;
-            Vector3 lookPos = player.position - CastPoint.transform.position;
-            lookPos.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            Instantiate(attack,CastPoint.transform.position, rotation);
+            Instantiate(attack.spell,CastPoint.transform.position, attackRotation);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -95,6 +104,19 @@ public class EnemyMovement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             inAttackRange = false;
+        }
+    }
+    public IEnumerator UseOtherSpell()
+    {
+        while (true) {
+            yield return new WaitForSeconds(3);
+            if (!attackAnimation)
+            {
+                int randomSpell = Random.Range(0, enemySpellPrefab.Length);
+                animator.SetFloat("SpellAnimation", randomSpell);
+                attack = enemySpellPrefab[randomSpell];
+                attackRange.radius = attack.attackRange;
+            }
         }
     }
 }

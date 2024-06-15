@@ -13,12 +13,20 @@ public class EnemyAnimationEvents : MonoBehaviour
 
     public void AnimationEnd()
     {
-        enemyMovement.attackAnimation = false;
+        if (enemyMovement.attackRange.radius != enemyMovement.enemySpellPrefab[0].attackRange)
+        {
+            enemyMovement.inAttackRange = false;
+        }
         enemyMovement.attackRange.radius = enemyMovement.enemySpellPrefab[0].attackRange;
-        enemyMovement.attack = enemyMovement.enemySpellPrefab[0].spell;
+        enemyMovement.attack = enemyMovement.enemySpellPrefab[0];
         if (enemyMovement.AttackCollider)
         {
             enemyMovement.AttackCollider.enabled = false;
         }
+        if (enemyMovement.enemySpellPrefab.Length > 1)
+        {
+            animator.SetFloat("SpellAnimation", 0);
+        }
+        enemyMovement.attackAnimation = false;
     }
 }
