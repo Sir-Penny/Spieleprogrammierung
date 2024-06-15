@@ -14,5 +14,11 @@ public class EnemyAnimationEvents : MonoBehaviour
     public void AnimationEnd()
     {
         enemyMovement.attackAnimation = false;
+        enemyMovement.attackRange.radius = enemyMovement.enemySpellPrefab[0].attackRange;
+        enemyMovement.attack = enemyMovement.enemySpellPrefab[0].spell;
+        if (enemyMovement.AttackCollider)
+        {
+            enemyMovement.AttackCollider.enabled = false;
+        }
     }
 }

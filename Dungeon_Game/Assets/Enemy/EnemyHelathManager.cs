@@ -34,7 +34,7 @@ public class EnemyHelathManager : MonoBehaviour
         UpdateHelthBar();
         if (enemyStats.health <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(this.transform.root.gameObject);
         }
     }
     private void OnTriggerEnter(Collider other)

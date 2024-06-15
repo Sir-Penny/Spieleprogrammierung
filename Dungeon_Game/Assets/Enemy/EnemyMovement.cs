@@ -14,8 +14,10 @@ public class EnemyMovement : MonoBehaviour
     public bool attackAnimation=false;
     public GameObject CastPoint;
 
+    public EnemySpellPrefab[] enemySpellPrefab;
     public GameObject attack;
     public bool fireAttack;
+    public Collider AttackCollider;
 
     private bool init=false;
 
@@ -25,7 +27,8 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         navMeshAgent.speed = enemyStats.moveSpeed;
-        attackRange.radius = enemyStats.attackRange;
+        attackRange.radius = enemySpellPrefab[0].attackRange;
+        attack = enemySpellPrefab[0].spell;
     }
 
     void Update()
@@ -57,6 +60,10 @@ public class EnemyMovement : MonoBehaviour
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = rotation;
+            if (AttackCollider)
+            {
+                AttackCollider.enabled = true;
+            }
         }
         if(!inAttackRange && !attackAnimation && navMeshAgent.isStopped)
         {

@@ -4169,11 +4169,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2745267960097591702, guid: 3d9c3e36b9998314d80a7ad7ae866eca,
-        type: 3}
-      propertyPath: attackRange
-      value: 
-      objectReference: {fileID: 486050964}
     - target: {fileID: 5261169291279901429, guid: 3d9c3e36b9998314d80a7ad7ae866eca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4238,11 +4233,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6162997067912889262, guid: 3d9c3e36b9998314d80a7ad7ae866eca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6102,12 +6092,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f157b2d6f094ca84c9bc97f0e37dc634,
     type: 3}
   m_PrefabInstance: {fileID: 1002262093}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &486050964 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 9184072980319724462, guid: 3d9c3e36b9998314d80a7ad7ae866eca,
-    type: 3}
-  m_PrefabInstance: {fileID: 317512359}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &487128801
 PrefabInstance:
