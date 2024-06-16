@@ -34,7 +34,8 @@ public class PlayerHealthManager : MonoBehaviour
         UpdateHelthBar();
         if (health <= 0)
         {
-            Destroy(this.transform.root.gameObject);
+            gameObject.transform.GetComponent<Animator>().SetBool("Death", true);
+            gameObject.transform.parent.GetComponent<PlayerMovement>().enabled = false;
         }
     }
     private void OnTriggerEnter(Collider other)
