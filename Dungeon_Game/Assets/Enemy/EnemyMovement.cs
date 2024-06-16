@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
     public bool fireAttack;
     public Collider AttackCollider;
     public Quaternion attackRotation;
+    public bool globalAbilityCooldown;
 
     private bool init=false;
 
@@ -59,7 +60,6 @@ public class EnemyMovement : MonoBehaviour
         }
         if(inAttackRange && !attackAnimation)
         {
-            //print("attack");
             attackAnimation = true;
             animator.SetTrigger("attack");
             Vector3 lookPos = player.position - transform.position;
@@ -86,7 +86,12 @@ public class EnemyMovement : MonoBehaviour
         if (fireAttack)
         {
             fireAttack = false;
-            Instantiate(attack.spell,CastPoint.transform.position, attackRotation);
+            if (attack.enemySpellCastType == EnemySpellCastType.Global)
+            {
+                 GameObject.FindGameObjectWithTag("GlobalAbility").GetComponent<GlobalAbility>().Activate();
+            } else if (attack.enemySpellCastType == EnemySpellCastType.Ranged) {
+                Instantiate(attack.spell, CastPoint.transform.position, attackRotation);
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -109,14 +114,30 @@ public class EnemyMovement : MonoBehaviour
     public IEnumerator UseOtherSpell()
     {
         while (true) {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
             if (!attackAnimation)
             {
                 int randomSpell = Random.Range(0, enemySpellPrefab.Length);
+                if (enemySpellPrefab[randomSpell].enemySpellCastType == EnemySpellCastType.Global)
+                {
+                    print(globalAbilityCooldown);
+                    if (globalAbilityCooldown)
+                        continue;
+                    else
+                        StartCoroutine(GlobalabilityCooldown(enemySpellPrefab[randomSpell].Cooldown));
+                }
                 animator.SetFloat("SpellAnimation", randomSpell);
                 attack = enemySpellPrefab[randomSpell];
                 attackRange.radius = attack.attackRange;
             }
         }
+    }
+    public IEnumerator GlobalabilityCooldown(float cooldown)
+    {
+        print("cooldownStart");
+        globalAbilityCooldown = true;
+        yield return new WaitForSeconds(cooldown);
+        globalAbilityCooldown = false;
+        print("cooldownEnd");
     }
 }

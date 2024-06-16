@@ -9,6 +9,7 @@ TagManager:
   - Collide
   - Fire
   - EnemySpell
+  - GlobalAbility
   layers:
   - Default
   - TransparentFX
