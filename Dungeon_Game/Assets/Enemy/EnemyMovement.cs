@@ -120,7 +120,6 @@ public class EnemyMovement : MonoBehaviour
                 int randomSpell = Random.Range(0, enemySpellPrefab.Length);
                 if (enemySpellPrefab[randomSpell].enemySpellCastType == EnemySpellCastType.Global)
                 {
-                    print(globalAbilityCooldown);
                     if (globalAbilityCooldown)
                         continue;
                     else
@@ -134,10 +133,8 @@ public class EnemyMovement : MonoBehaviour
     }
     public IEnumerator GlobalabilityCooldown(float cooldown)
     {
-        print("cooldownStart");
         globalAbilityCooldown = true;
         yield return new WaitForSeconds(cooldown);
         globalAbilityCooldown = false;
-        print("cooldownEnd");
     }
 }
