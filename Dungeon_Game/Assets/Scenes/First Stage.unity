@@ -9029,7 +9029,7 @@ GameObject:
   - component: {fileID: 665873563}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: PlayerRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17317,6 +17317,8 @@ MonoBehaviour:
   HelthBar: {fileID: 817057612}
   slider: {fileID: 817057614}
   health: 100
+  gameLostmenu: {fileID: 7223556198488150703, guid: c7316ac300bcd7348882cb0a421b7900,
+    type: 3}
 --- !u!1 &1213620032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f157b2d6f094ca84c9bc97f0e37dc634,
@@ -20687,6 +20689,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.043019, y: 4.999218, z: 0.6130029}
   m_Center: {x: -0.0019092564, y: 2.4996095, z: 0.0013450835}
+--- !u!1 &1420703228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420703230}
+  - component: {fileID: 1420703229}
+  m_Layer: 0
+  m_Name: StartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420703229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420703228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba673335fd4faf4fb90544a79026149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1420703230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420703228}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 37.23, y: 0, z: 28.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1421310318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f157b2d6f094ca84c9bc97f0e37dc634,
@@ -33304,3 +33350,4 @@ SceneRoots:
   - {fileID: 625183168}
   - {fileID: 317512359}
   - {fileID: 1349035115}
+  - {fileID: 1420703230}

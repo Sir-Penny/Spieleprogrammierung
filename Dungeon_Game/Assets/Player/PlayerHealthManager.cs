@@ -12,6 +12,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     public float health;
 
+    public GameObject gameLostmenu;
+
     private void Start()
     {
         playerCam = Camera.main;
@@ -36,6 +38,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             gameObject.transform.GetComponent<Animator>().SetBool("Death", true);
             gameObject.transform.parent.GetComponent<PlayerMovement>().enabled = false;
+            Instantiate(gameLostmenu);
             Time.timeScale = 0;
         }
     }
