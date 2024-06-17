@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     public Collider AttackCollider;
     public Quaternion attackRotation;
     public bool globalAbilityCooldown;
+    public LayerMask layersToIgnore;
 
     private bool init=false;
 
@@ -57,31 +58,52 @@ public class EnemyMovement : MonoBehaviour
                     }
                 }
             }
-        }
-        if(inAttackRange && !attackAnimation)
-        {
-            attackAnimation = true;
-            animator.SetTrigger("attack");
-            Vector3 lookPos = player.position - transform.position;
-            lookPos.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = rotation;
-            if (attack.enemySpellCastType != EnemySpellCastType.Meele)
+            if (!inAttackRange && !attackAnimation && navMeshAgent.isStopped)
             {
-                lookPos = player.position - CastPoint.transform.position;
-                lookPos.y = 0;
-                attackRotation = Quaternion.LookRotation(lookPos);
+                animator.SetBool("walking", true);
+                navMeshAgent.speed = enemyStats.moveSpeed;
+                navMeshAgent.isStopped = false;
             }
-            if (AttackCollider && attack.enemySpellCastType == EnemySpellCastType.Meele)
+            if (inAttackRange && !attackAnimation)
             {
-                AttackCollider.enabled = true;
+                Vector3 direction = player.position + Vector3.up - CastPoint.transform.position;
+                if (Physics.Raycast(CastPoint.transform.position, direction, out RaycastHit hit, enemyStats.targetRange, ~layersToIgnore))
+                {
+                    if (hit.transform.gameObject.layer == 7)
+                    {
+                        navMeshAgent.speed = 0;
+                        navMeshAgent.isStopped = true;
+                        animator.SetBool("walking", false);
+                        attackAnimation = true;
+                        animator.SetTrigger("attack");
+                        Vector3 lookPos = player.position - transform.position;
+                        lookPos.y = 0;
+                        Quaternion rotation = Quaternion.LookRotation(lookPos);
+                        transform.rotation = rotation;
+                        if (attack.enemySpellCastType != EnemySpellCastType.Meele)
+                        {
+                            lookPos = player.position - CastPoint.transform.position;
+                            lookPos.y = 0;
+                            attackRotation = Quaternion.LookRotation(lookPos);
+                        }
+                        if (AttackCollider && attack.enemySpellCastType == EnemySpellCastType.Meele)
+                        {
+                            AttackCollider.enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        navMeshAgent.speed = enemyStats.moveSpeed;
+                        navMeshAgent.isStopped = false;
+                        animator.SetBool("walking", true);
+                    }
+                }
             }
         }
-        if(!inAttackRange && !attackAnimation && navMeshAgent.isStopped)
+        else
         {
-            animator.SetBool("walking", true);
-            navMeshAgent.speed = enemyStats.moveSpeed;
-            navMeshAgent.isStopped = false;
+            navMeshAgent.isStopped = true;
+            animator.SetBool("walking", false);
         }
         if (fireAttack)
         {

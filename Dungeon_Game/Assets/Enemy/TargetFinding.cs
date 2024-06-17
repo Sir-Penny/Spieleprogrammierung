@@ -26,9 +26,9 @@ public class TargetFinding : MonoBehaviour
             Vector3 direction = (targetPosition - originPosition);
             if (Physics.Raycast(originPosition, direction, out RaycastHit hit, enemyStats.targetRange,~layersToIgnore))
             {
-                Debug.DrawRay(originPosition, direction, Color.green, 0.1f, false);
                 if (hit.transform.gameObject.layer == 7) {
                     enemyStats.foundEnemy = true;
+                    sphereCollider.radius = enemyStats.targetRange * 2;
                 }
             }
         }
@@ -44,10 +44,12 @@ public class TargetFinding : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player"&&!enemyStats.foundEnemy)
+        if (other.gameObject.tag == "Player")
         {
             playerInRange = false;
             enemy = null;
+            enemyStats.foundEnemy = false;
+            sphereCollider.radius = enemyStats.targetRange;
         }
     }
 }

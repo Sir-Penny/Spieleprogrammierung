@@ -509,6 +509,9 @@ MonoBehaviour:
   AttackCollider: {fileID: 0}
   attackRotation: {x: 0, y: 0, z: 0, w: 0}
   globalAbilityCooldown: 0
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 4928
 --- !u!195 &4832634763652573565
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -520,7 +523,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360
   m_StoppingDistance: 0
@@ -595,6 +598,9 @@ MonoBehaviour:
   AttackCollider: {fileID: 785296008292044789}
   attackRotation: {x: 0, y: 0, z: 0, w: 0}
   globalAbilityCooldown: 0
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &721545678244225197
 PrefabInstance:
   m_ObjectHideFlags: 0
