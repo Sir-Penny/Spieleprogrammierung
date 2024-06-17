@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadMenu : MonoBehaviour
 {
+    public GameObject LoadScenen;
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        GameObject go = Instantiate(LoadScenen);
+        go.GetComponent<LoadNewStage>().sceneName = "Menu";
         Destroy(GameObject.FindGameObjectWithTag("PlayerRoot"));
     }
 }

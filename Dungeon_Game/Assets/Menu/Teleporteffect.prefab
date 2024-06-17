@@ -74,6 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Second Stage
+  LoadScenen: {fileID: 2483627352235208017, guid: 95655b654fa245543901029ac3e6d4b4,
+    type: 3}
 --- !u!1001 &4932487820781163701
 PrefabInstance:
   m_ObjectHideFlags: 0

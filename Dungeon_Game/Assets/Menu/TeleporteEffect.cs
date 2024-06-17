@@ -8,6 +8,7 @@ public class TeleporteEffect : MonoBehaviour
     private Coroutine effect;
     private int i=0;
     public string sceneName;
+    public GameObject LoadScenen;
     public IEnumerator RunEffect()
     {
         while (i < 5)
@@ -16,7 +17,10 @@ public class TeleporteEffect : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
             i++;
         }
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        Time.timeScale = 0;
+        GameObject go = Instantiate(LoadScenen);
+        go.GetComponent<LoadNewStage>().sceneName = sceneName;
+        //SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
     }
 
