@@ -120,10 +120,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            navMeshAgent.speed = 0;
-            navMeshAgent.isStopped = true;
             inAttackRange = true;
-            animator.SetBool("walking", false);
         }
     }
     public void OnTriggerExit(Collider other)
