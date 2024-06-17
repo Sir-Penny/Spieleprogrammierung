@@ -36,6 +36,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             gameObject.transform.GetComponent<Animator>().SetBool("Death", true);
             gameObject.transform.parent.GetComponent<PlayerMovement>().enabled = false;
+            Time.timeScale = 0;
         }
     }
     private void OnTriggerEnter(Collider other)

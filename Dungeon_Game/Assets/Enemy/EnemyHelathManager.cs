@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class EnemyHelathManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class EnemyHelathManager : MonoBehaviour
     public EnemyStats enemyStats;
     private Camera playerCam;
     private float maxHealth;
+    public Animator animator;
+    public GameObject enemyRoot;
 
     private void Awake()
     {
@@ -34,7 +37,12 @@ public class EnemyHelathManager : MonoBehaviour
         UpdateHelthBar();
         if (enemyStats.health <= 0)
         {
-            Destroy(this.transform.root.gameObject);
+            enemyRoot.GetComponent<EnemyMovement>().enabled = false;
+            enemyRoot.GetComponent<NavMeshAgent>().isStopped = true;
+            Destroy(HelthBar);
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            animator.SetBool("Death", true);
+            this.enabled = false;
         }
     }
     private void OnTriggerEnter(Collider other)

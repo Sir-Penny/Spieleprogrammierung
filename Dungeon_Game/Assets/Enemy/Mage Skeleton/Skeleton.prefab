@@ -3649,7 +3649,7 @@ GameObject:
   - component: {fileID: 1968498241918250094}
   m_Layer: 9
   m_Name: Skeleton
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3716,6 +3716,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f6f7e3ac6225ce44b9c44d96daf84ea, type: 2}
   attack: {fileID: 0}
   fireAttack: 0
+  AttackCollider: {fileID: 0}
+  attackRotation: {x: 0, y: 0, z: 0, w: 0}
+  globalAbilityCooldown: 0
 --- !u!195 &4832634763652573565
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4818,6 +4821,8 @@ MonoBehaviour:
   HelthBar: {fileID: 5804129200954694944}
   slider: {fileID: 4120247885876026727}
   enemyStats: {fileID: 1968498241918250094}
+  animator: {fileID: 1454232865747010515}
+  enemyRoot: {fileID: 6162997067912889262}
 --- !u!136 &4829422453406155511
 CapsuleCollider:
   m_ObjectHideFlags: 0

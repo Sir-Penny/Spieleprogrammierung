@@ -3728,6 +3728,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 598df6d00aa9299458861b745f1a4d7f, type: 2}
   attack: {fileID: 0}
   fireAttack: 0
+  AttackCollider: {fileID: 0}
+  attackRotation: {x: 0, y: 0, z: 0, w: 0}
+  globalAbilityCooldown: 0
 --- !u!195 &4832634763652573565
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4830,6 +4833,8 @@ MonoBehaviour:
   HelthBar: {fileID: 5804129200954694944}
   slider: {fileID: 4120247885876026727}
   enemyStats: {fileID: 1968498241918250094}
+  animator: {fileID: 1454232865747010515}
+  enemyRoot: {fileID: 6162997067912889262}
 --- !u!136 &5438703314997214190
 CapsuleCollider:
   m_ObjectHideFlags: 0

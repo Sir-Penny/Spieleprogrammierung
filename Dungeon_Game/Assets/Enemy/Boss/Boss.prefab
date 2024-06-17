@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6468408180009342800}
   - component: {fileID: 7980621245757957887}
   - component: {fileID: 4235032783725840004}
+  - component: {fileID: 6477989944927585729}
   m_Layer: 12
   m_Name: TragetFinding
   m_TagString: Untagged
@@ -70,6 +71,19 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 4928
+--- !u!114 &6477989944927585729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248881767675398967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee11bfef6e77bb54eb2a7413ed8c99d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossCollider: {fileID: 3348056117078786293}
 --- !u!1 &3833976827880926368
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +507,8 @@ MonoBehaviour:
   attack: {fileID: 0}
   fireAttack: 0
   AttackCollider: {fileID: 0}
+  attackRotation: {x: 0, y: 0, z: 0, w: 0}
+  globalAbilityCooldown: 0
 --- !u!195 &4832634763652573565
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -577,6 +593,8 @@ MonoBehaviour:
   attack: {fileID: 0}
   fireAttack: 0
   AttackCollider: {fileID: 785296008292044789}
+  attackRotation: {x: 0, y: 0, z: 0, w: 0}
+  globalAbilityCooldown: 0
 --- !u!1001 &721545678244225197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,15 +770,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1246891314395918, guid: cb4ff29f6f657bc4d94ed49c50a70be2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6738535996236871594}
-    - targetCorrespondingSourceObject: {fileID: 1246891314395918, guid: cb4ff29f6f657bc4d94ed49c50a70be2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1106850231499435070}
     - targetCorrespondingSourceObject: {fileID: 1246891314395918, guid: cb4ff29f6f657bc4d94ed49c50a70be2,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3348056117078786293}
+    - targetCorrespondingSourceObject: {fileID: 1246891314395918, guid: cb4ff29f6f657bc4d94ed49c50a70be2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77765668629719348}
   m_SourcePrefab: {fileID: 100100000, guid: cb4ff29f6f657bc4d94ed49c50a70be2, type: 3}
 --- !u!1 &8278604244290494991 stripped
 GameObject:
@@ -768,20 +786,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8279846716055214337}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6738535996236871594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8278604244290494991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac31355355c0264589d585c22b4acd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8337515484069702365}
-  enemyMovement: {fileID: 2745267960097591702}
 --- !u!114 &1106850231499435070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,6 +801,8 @@ MonoBehaviour:
   HelthBar: {fileID: 5804129200954694944}
   slider: {fileID: 4120247885876026727}
   enemyStats: {fileID: 1968498241918250094}
+  animator: {fileID: 8337515484069702365}
+  enemyRoot: {fileID: 6162997067912889262}
 --- !u!136 &3348056117078786293
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -814,12 +820,27 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &77765668629719348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278604244290494991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c441e4f85a885724681827b1591a16e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8337515484069702365}
+  enemyMovement: {fileID: 2745267960097591702}
+  gameWinUI: {fileID: 0}
 --- !u!4 &8279900571577901927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4487155159382630, guid: cb4ff29f6f657bc4d94ed49c50a70be2,
