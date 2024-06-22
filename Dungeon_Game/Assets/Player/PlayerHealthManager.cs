@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class PlayerHealthManager : MonoBehaviour
 {
     public GameObject HelthBar;
+    public GameObject HealthBarUI;
     public Slider slider;
+    public Slider sliderUI;
     private Camera playerCam;
     private float maxHealth;
 
@@ -28,6 +30,7 @@ public class PlayerHealthManager : MonoBehaviour
     public void UpdateHelthBar()
     {
         slider.value = health / maxHealth;
+        sliderUI.value = health / maxHealth;
     }
 
     public void ReciveDamge(float damage)
