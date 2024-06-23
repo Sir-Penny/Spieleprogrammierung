@@ -11,6 +11,7 @@ public class SpellPrefab : ScriptableObject
     public Vector3 spawmPosition;
     public Vector3 spawmRotation;
     public float manaCost;
+    public Sprite image;
 }
 
 public enum SpellCastType

@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     public Camera playerCame;
-    public SpellPrefab[] spells;
+    public List<SpellContainer> spells = new List<SpellContainer>();
     public GameObject spellCastPoint;
     private Animator animator;
     private bool spellAniamtion = false;
@@ -17,12 +19,19 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed = 5;
     private Vector3 spellMousePos = Vector3.zero;
     public bool groundhit;
+    public PlayerManaManager playerManaManager;
+    public float damage;
+    public GameObject Abilitys;
+    public SpellPrefab defaultSpell;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         navMeshAgent.speed = playerSpeed;
+        Abilitys.transform.GetChild(0).GetComponent<Image>().sprite = defaultSpell.image;
+        Abilitys.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = defaultSpell.manaCost.ToString();
+        spells.Add(new SpellContainer(defaultSpell, KeyCode.Q));
     }
     void Update()
     {
@@ -53,39 +62,38 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("WalkingPlayer", true);
         }
 
-        //TODO add Cast time instead of using animation Events
-        if (Input.GetKeyDown(KeyCode.Q)&& spellAniamtion == false)
+        foreach(SpellContainer spellContainer in spells)
         {
-            spell = spells[0];
-            StartAttacke(mouseWorldPos);
-        }
-        if (Input.GetKeyDown(KeyCode.W) && spellAniamtion == false)
-        {
-            spell = spells[1];
-            StartAttacke(mouseWorldPos);
-        }
-        if (Input.GetKeyDown(KeyCode.E)&& spellAniamtion == false)
-        {
-            spell = spells[2];
-            StartAttacke(mouseWorldPos);
-        }   
+            if(spellAniamtion == false)
+            {
+                SpellPrefab spell = spellContainer.spellPrefab;
+                if (Input.GetKeyDown(spellContainer.inputKey)&& playerManaManager.TryUseMana(spell.manaCost))
+                {
+                    this.spell = spell;
+                    StartAttacke(mouseWorldPos);
+                }
+            }
+        }  
         if (throwSpell)
         {
             if (spell.spellCastType == SpellCastType.PlayerPos)
             {
-                Instantiate(spell.prefab, transform.position+spell.spawmPosition, transform.rotation*Quaternion.Euler(spell.spawmRotation));
+                GameObject go = Instantiate(spell.prefab, transform.position+spell.spawmPosition, transform.rotation*Quaternion.Euler(spell.spawmRotation));
+                go.GetComponent<SpellDamage>().Damage += damage;
                 throwSpell = false;
                 spellAniamtion = false;
             }
             if (spell.spellCastType == SpellCastType.ThrowPos)
             {
-                Instantiate(spell.prefab, spellCastPoint.transform.position + spell.spawmPosition, transform.rotation * Quaternion.Euler(spell.spawmRotation));
+                GameObject go =Instantiate(spell.prefab, spellCastPoint.transform.position + spell.spawmPosition, transform.rotation * Quaternion.Euler(spell.spawmRotation));
+                go.GetComponent<SpellDamage>().Damage += damage;
                 throwSpell = false;
                 spellAniamtion = false;
             }
             if (spell.spellCastType == SpellCastType.MousePos)
             {
-                Instantiate(spell.prefab, spellMousePos + spell.spawmPosition, transform.rotation * Quaternion.Euler(spell.spawmRotation));
+                GameObject go = Instantiate(spell.prefab, spellMousePos + spell.spawmPosition, transform.rotation * Quaternion.Euler(spell.spawmRotation));
+                go.GetComponent<SpellDamage>().Damage += damage;
                 throwSpell = false;
                 spellAniamtion = false;
             }
@@ -104,5 +112,22 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = rotation;
         spellMousePos = mouseWorldPos;
+    }
+
+    public void AddSpell(SpellPrefab spellPrefab)
+    {
+        KeyCode keyCode;
+        Abilitys.transform.GetChild(spells.Count).GetComponent<Image>().sprite = spellPrefab.image;
+        Abilitys.transform.GetChild(spells.Count).GetChild(0).GetComponent<TMP_Text>().text = spellPrefab.manaCost.ToString();
+        Abilitys.transform.GetChild(spells.Count).gameObject.SetActive(true);
+        if (spells.Count == 1)
+        {
+            keyCode = KeyCode.W;
+        }
+        else
+        {
+            keyCode = KeyCode.E;
+        }
+        spells.Add(new SpellContainer(spellPrefab,keyCode));
     }
 }

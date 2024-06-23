@@ -12,5 +12,8 @@ public class EnemyStats : MonoBehaviour
     public float moveSpeed;
     public float attackDamage;
 
+    public int exp;
+
     public bool foundEnemy = false;
+    public GameObject target;
 }

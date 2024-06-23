@@ -32,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.speed = enemyStats.moveSpeed;
         attackRange.radius = enemySpellPrefab[0].attackRange;
         attack = enemySpellPrefab[0];
+        enemyStats.target = player.gameObject;
     }
 
     void Update()

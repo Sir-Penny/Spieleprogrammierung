@@ -3783,7 +3783,9 @@ MonoBehaviour:
   attackRange: 15
   moveSpeed: 2
   attackDamage: 5
+  exp: 10
   foundEnemy: 0
+  target: {fileID: 0}
 --- !u!1 &6374882941418418478
 GameObject:
   m_ObjectHideFlags: 0

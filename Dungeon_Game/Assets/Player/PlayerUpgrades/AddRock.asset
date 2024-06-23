@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062d244ca663f9e4987e159529d9145f, type: 3}
+  m_Name: AddRock
+  m_EditorClassIdentifier: 
+  playerUpgaredTypes: 0
+  upgradeName: Rock
+  upgradeDescription: you can now use a Rock
+  skill: {fileID: 11400000, guid: d98e99a040e93b446a4665f673b53e44, type: 2}

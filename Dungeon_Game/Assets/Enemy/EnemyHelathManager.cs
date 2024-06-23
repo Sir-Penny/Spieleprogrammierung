@@ -43,6 +43,7 @@ public class EnemyHelathManager : MonoBehaviour
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
             animator.SetBool("Death", true);
             this.enabled = false;
+            enemyStats.target.GetComponent<PlayerEnemyDeathManager>().AddOnEnemyDeath(enemyStats.exp);
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -16,3 +16,5 @@ MonoBehaviour:
   spellCastType: 1
   spawmPosition: {x: 0, y: 0, z: 0}
   spawmRotation: {x: 0, y: 0, z: 0}
+  manaCost: 10
+  image: {fileID: 21300000, guid: e3d50b779cd289d48a00e6777b9f6385, type: 3}

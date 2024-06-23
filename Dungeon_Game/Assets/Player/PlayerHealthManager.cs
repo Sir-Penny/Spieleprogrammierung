@@ -10,8 +10,8 @@ public class PlayerHealthManager : MonoBehaviour
     public Slider slider;
     public Slider sliderUI;
     private Camera playerCam;
-    private float maxHealth;
-
+    public float maxHealth;
+    public float regenerationAmmount;
     public float health;
 
     public GameObject gameLostmenu;
@@ -22,6 +22,7 @@ public class PlayerHealthManager : MonoBehaviour
         maxHealth = 100;
         slider.value = 100;
         HelthBar.transform.LookAt(playerCam.transform);
+        StartCoroutine(RegenrateHealth());
     }
     void Update()
     {
@@ -54,6 +55,18 @@ public class PlayerHealthManager : MonoBehaviour
         if (other.gameObject.tag == "EnemySpell")
         {
             ReciveDamge(other.gameObject.transform.root.GetComponent<SpellDamage>().Damage);
+        }
+    }
+    public IEnumerator RegenrateHealth()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            if (health < maxHealth)
+            {
+                health += regenerationAmmount;
+                UpdateHelthBar();
+            }
         }
     }
 }
