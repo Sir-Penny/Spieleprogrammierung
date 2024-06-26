@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f32682d0d360746bd81bb860776db6, type: 3}
   m_Name: ManaReg
   m_EditorClassIdentifier: 
-  playerUpgaredTypes: 0
+  playerUpgaredTypes: 2
   upgradeName: Mana Regeneration
   upgradeDescription: Increases Mana Regeneration
   globalUpgradetyp: 3
