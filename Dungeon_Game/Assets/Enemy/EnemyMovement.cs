@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     public EnemySpellPrefab[] enemySpellPrefab;
     public EnemySpellPrefab attack;
     public bool fireAttack;
-    public Collider AttackCollider;
+    public Collider[] AttackCollider;
     public Quaternion attackRotation;
     public bool globalAbilityCooldown;
     public LayerMask layersToIgnore;
@@ -72,11 +72,11 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (hit.transform.gameObject.layer == 7)
                     {
+                        animator.SetTrigger("attack");
                         navMeshAgent.speed = 0;
                         navMeshAgent.isStopped = true;
                         animator.SetBool("walking", false);
                         attackAnimation = true;
-                        animator.SetTrigger("attack");
                         Vector3 lookPos = player.position - transform.position;
                         lookPos.y = 0;
                         Quaternion rotation = Quaternion.LookRotation(lookPos);
@@ -87,9 +87,12 @@ public class EnemyMovement : MonoBehaviour
                             lookPos.y = 0;
                             attackRotation = Quaternion.LookRotation(lookPos);
                         }
-                        if (AttackCollider && attack.enemySpellCastType == EnemySpellCastType.Meele)
+                        if (attack.enemySpellCastType == EnemySpellCastType.Meele)
                         {
-                            AttackCollider.enabled = true;
+                            for(int i=0; i < AttackCollider.Length; i++)
+                            {
+                                AttackCollider[i].enabled = true;
+                            }
                         }
                     }
                     else

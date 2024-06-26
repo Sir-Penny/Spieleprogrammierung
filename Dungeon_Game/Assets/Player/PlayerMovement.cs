@@ -130,4 +130,15 @@ public class PlayerMovement : MonoBehaviour
         }
         spells.Add(new SpellContainer(spellPrefab,keyCode));
     }
+
+    public void AddSpellUpgrade(int spellid, skillUpgrade skillUpgrade)
+    {
+        foreach(SpellContainer spell in spells)
+        {
+            if(spell.spellPrefab.spellid== spellid)
+            {
+                spell.upgrades.Add(skillUpgrade);
+            }
+        }
+    }
 }

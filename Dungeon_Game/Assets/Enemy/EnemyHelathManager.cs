@@ -39,10 +39,16 @@ public class EnemyHelathManager : MonoBehaviour
         {
             enemyRoot.GetComponent<EnemyMovement>().enabled = false;
             enemyRoot.GetComponent<NavMeshAgent>().isStopped = true;
+            enemyRoot.GetComponent<NavMeshAgent>().enabled= false;
             Destroy(HelthBar);
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            enemyRoot.GetComponent<CapsuleCollider>().enabled = false;
             animator.SetBool("Death", true);
             this.enabled = false;
+            for (int i = 0; i < enemyRoot.GetComponent<EnemyMovement>().AttackCollider.Length; i++)
+            {
+                enemyRoot.GetComponent<EnemyMovement>().AttackCollider[i].enabled = false;
+            }
             enemyStats.target.GetComponent<PlayerEnemyDeathManager>().AddOnEnemyDeath(enemyStats.exp);
         }
     }

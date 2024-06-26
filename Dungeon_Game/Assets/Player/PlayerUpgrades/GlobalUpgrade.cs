@@ -6,8 +6,8 @@ using UnityEngine;
 public class GlobalUpgrade : PlayerUpgrade
 {
     public GlobalUpgradetyp globalUpgradetyp;
-    public int ammount;
-    public override void UpgradeSelected(PlayerUpgradeManager player)
+    public float ammount;
+    public override void UpgradeSelected(PlayerUpgradeManager player, int spellid)
     {
         player.ManageGlobalUpgrades(this);   
     }

@@ -19,9 +19,9 @@ public class EnemyAnimationEvents : MonoBehaviour
         }
         enemyMovement.attackRange.radius = enemyMovement.enemySpellPrefab[0].attackRange;
         enemyMovement.attack = enemyMovement.enemySpellPrefab[0];
-        if (enemyMovement.AttackCollider)
+        for (int i = 0; i < enemyMovement.AttackCollider.Length; i++)
         {
-            enemyMovement.AttackCollider.enabled = false;
+            enemyMovement.AttackCollider[i].enabled = false;
         }
         if (enemyMovement.enemySpellPrefab.Length > 1)
         {

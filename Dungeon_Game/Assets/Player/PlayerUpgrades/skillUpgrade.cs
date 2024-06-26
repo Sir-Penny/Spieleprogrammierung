@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class skillUpgrade : MonoBehaviour
+[CreateAssetMenu]
+public class skillUpgrade : PlayerUpgrade
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Component skillUpgradeComponent;
 
-    // Update is called once per frame
-    void Update()
+    public override void UpgradeSelected(PlayerUpgradeManager player,int spellid)
     {
-        
+        player.AddSkillUpgrade(spellid,this);
     }
 }

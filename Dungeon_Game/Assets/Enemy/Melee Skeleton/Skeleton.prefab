@@ -346,7 +346,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 28.018778, y: 8.532919, z: 17.86556}
   m_Center: {x: 9.009383, y: 1.250437, z: -1.889104}
@@ -1641,7 +1641,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 28.018778, y: 8.532919, z: 17.86556}
   m_Center: {x: -9.009383, y: -1.2504369, z: 1.8891038}
@@ -3728,12 +3728,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 598df6d00aa9299458861b745f1a4d7f, type: 2}
   attack: {fileID: 0}
   fireAttack: 0
-  AttackCollider: {fileID: 0}
+  AttackCollider:
+  - {fileID: 5625609154467165299}
+  - {fileID: 2504051898172174964}
   attackRotation: {x: 0, y: 0, z: 0, w: 0}
   globalAbilityCooldown: 0
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 4928
+    m_Bits: 13120
 --- !u!195 &4832634763652573565
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3792,7 +3794,7 @@ MonoBehaviour:
   health: 10
   damage: 5
   targetRange: 20
-  attackRange: 1
+  attackRange: 1.5
   moveSpeed: 2
   attackDamage: 5
   exp: 5

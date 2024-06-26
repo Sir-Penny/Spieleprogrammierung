@@ -7,7 +7,7 @@ public class AddSkill : PlayerUpgrade
 {
     public SpellPrefab skill;
 
-    public override void UpgradeSelected(PlayerUpgradeManager player)
+    public override void UpgradeSelected(PlayerUpgradeManager player, int spellid)
     {
         player.ManageAddSkill(this);
     }

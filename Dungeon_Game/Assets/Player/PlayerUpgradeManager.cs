@@ -5,11 +5,20 @@ using UnityEngine;
 public class PlayerUpgradeManager : MonoBehaviour
 {
     public PlayerHealthManager playerHealthManager;
+    public PlayerManaManager playerManaManager;
     public PlayerMovement playerMovement;
     public void AddMaxHealth(float ammount)
     {
         playerHealthManager.health += ammount;
         playerHealthManager.maxHealth += ammount;
+    }
+    public void IncreaseManaReg(float ammount)
+    {
+        playerManaManager.regenerationAmmount += ammount;
+    }
+    public void IncreaseHeathReg(float ammount)
+    {
+        playerHealthManager.regenerationAmmount += ammount;
     }
 
     public void AddDammage(float ammount)
@@ -27,6 +36,14 @@ public class PlayerUpgradeManager : MonoBehaviour
         {
             AddDammage(upgrade.ammount);
         }
+        if (upgrade.globalUpgradetyp == GlobalUpgradetyp.HealthReg)
+        {
+            IncreaseHeathReg(upgrade.ammount);
+        }
+        if (upgrade.globalUpgradetyp == GlobalUpgradetyp.ManaReg)
+        {
+            IncreaseManaReg(upgrade.ammount);
+        }
     }
 
     public void ManageAddSkill(AddSkill upgrade)
@@ -34,10 +51,16 @@ public class PlayerUpgradeManager : MonoBehaviour
         playerMovement.AddSpell(upgrade.skill);
     }
 
+    public void AddSkillUpgrade(int spellid,skillUpgrade upgrade)
+    {
+        playerMovement.AddSpellUpgrade(spellid, upgrade);
+    }
 }
 
 public enum GlobalUpgradetyp
 {
     AddMaxHealth,
     AddDamage,
+    HealthReg,
+    ManaReg
 }
