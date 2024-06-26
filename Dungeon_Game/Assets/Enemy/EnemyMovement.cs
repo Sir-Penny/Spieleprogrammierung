@@ -89,8 +89,10 @@ public class EnemyMovement : MonoBehaviour
                         }
                         if (attack.enemySpellCastType == EnemySpellCastType.Meele)
                         {
+                            print(AttackCollider.Length);
                             for(int i=0; i < AttackCollider.Length; i++)
                             {
+                                print(AttackCollider[i]);
                                 AttackCollider[i].enabled = true;
                             }
                         }

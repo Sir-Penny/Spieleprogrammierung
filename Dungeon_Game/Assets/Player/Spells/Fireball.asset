@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045e3bca2762fbe4a88bc3bf82124b8d, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  spellid: 1
   prefab: {fileID: 8899966837999452304, guid: 918322b229d3772409c745cd5c43b77e, type: 3}
   spellCastType: 1
   spawmPosition: {x: 0, y: 0, z: 0}
   spawmRotation: {x: 0, y: 0, z: 0}
   manaCost: 10
   image: {fileID: 21300000, guid: e3d50b779cd289d48a00e6777b9f6385, type: 3}
+  skillUpgrades:
+  - {fileID: 11400000, guid: c2a69e4b9c297f84c8ed9c5edc8ab274, type: 2}

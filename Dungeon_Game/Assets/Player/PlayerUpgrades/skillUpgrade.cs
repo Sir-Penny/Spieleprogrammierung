@@ -5,10 +5,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class skillUpgrade : PlayerUpgrade
 {
-    public Component skillUpgradeComponent;
+    public string scriptType;
+    public GameObject pefab;
 
     public override void UpgradeSelected(PlayerUpgradeManager player,int spellid)
     {
         player.AddSkillUpgrade(spellid,this);
     }
 }
+

@@ -8,7 +8,7 @@ public class LoadNewStage : MonoBehaviour
     public string sceneName;
     private Scene currentscene;
     private Scene loading;
-    private bool scenenLoaded;
+    private bool sceneLoaded;
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -18,7 +18,7 @@ public class LoadNewStage : MonoBehaviour
 
     private void Update()
     {
-        if(scenenLoaded && !currentscene.isLoaded)
+        if(sceneLoaded && !currentscene.isLoaded)
         {
             SceneManager.UnloadSceneAsync(loading);
             Destroy(this.gameObject);
@@ -32,9 +32,10 @@ public class LoadNewStage : MonoBehaviour
             SceneManager.UnloadSceneAsync(currentscene);
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         }
-        else
+        else if (scene.name == sceneName)
         {
-            scenenLoaded = true;
+            SceneManager.SetActiveScene(scene);
+            sceneLoaded = true;
         }
     }
     private void OnDestroy()

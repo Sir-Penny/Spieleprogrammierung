@@ -20,7 +20,6 @@ public class TeleporteEffect : MonoBehaviour
         Time.timeScale = 0;
         GameObject go = Instantiate(LoadScenen);
         go.GetComponent<LoadNewStage>().sceneName = sceneName;
-        //SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
     }
 

@@ -29,7 +29,7 @@ public class SkillUpgradeManager : MonoBehaviour
             int r = Random.Range(0, playerUpgrades.Count);
             playerUpgradesContainer upgrade = playerUpgrades[r];
             upgrads[i].GetComponent<Button>().onClick.AddListener(() => OnClickUpgrade(upgrade));
-            upgrade.playerUpgrade.displayUpgrade(upgrads[i].transform.GetChild(0).GetComponent<TMP_Text>(), upgrads[i].transform.GetChild(1).GetComponent<TMP_Text>());
+            upgrade.playerUpgrade.displayUpgrade(upgrads[i].transform.GetChild(0).GetComponent<TMP_Text>(), upgrads[i].transform.GetChild(1).GetComponent<TMP_Text>(),upgrade.value);
             removedUpgrades[i]=upgrade;
             playerUpgrades.RemoveAt(r);
         }
@@ -45,6 +45,14 @@ public class SkillUpgradeManager : MonoBehaviour
                 playerUpgrades.Add(removedUpgrades[i]);
             }
         }
+        if(playerUpgrade.playerUpgrade.playerUpgaredTypes == PlayerUpgaredTypes.addSkill)
+        {
+            AddSkill addSkill = (AddSkill)playerUpgrade.playerUpgrade;
+            foreach(PlayerUpgrade spellupgrades in addSkill.skill.skillUpgrades)
+            {
+                playerUpgrades.Add(new playerUpgradesContainer(spellupgrades,addSkill.skill.spellid,addSkill.upgradeName));
+            }
+        }
         playerUpgrade.playerUpgrade.UpgradeSelected(playerUpgradeManager,playerUpgrade.spellid);
         Time.timeScale = 1;
     }
@@ -55,15 +63,18 @@ public class playerUpgradesContainer
 {
     public PlayerUpgrade playerUpgrade;
     public int spellid;
+    public string value;
 
     public playerUpgradesContainer(PlayerUpgrade playerUpgrade)
     {
         this.playerUpgrade = playerUpgrade;
         spellid = -1;
+        value = "";
     }
-    public playerUpgradesContainer(PlayerUpgrade playerUpgrade,int spellid)
+    public playerUpgradesContainer(PlayerUpgrade playerUpgrade,int spellid,string value)
     {
         this.playerUpgrade = playerUpgrade;
         this.spellid = spellid;
+        this.value = value;
     }
 }

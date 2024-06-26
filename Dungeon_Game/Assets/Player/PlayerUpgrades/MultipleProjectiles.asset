@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5456ea3f2c5679147b977676161a7a39, type: 3}
   m_Name: MultipleProjectiles
   m_EditorClassIdentifier: 
-  playerUpgaredTypes: 0
-  upgradeName: 
-  upgradeDescription: 
-  skillUpgardeType: 0
+  playerUpgaredTypes: 1
+  upgradeName: Multiple Projectiles
+  upgradeDescription: 'fires 3 Projectils for spell:'
+  scriptType: MultipleProjectiles
+  pefab: {fileID: 0}

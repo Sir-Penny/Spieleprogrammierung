@@ -12,10 +12,10 @@ public abstract class PlayerUpgrade : ScriptableObject
 
     public abstract void UpgradeSelected(PlayerUpgradeManager player, int spellid);
 
-    public void displayUpgrade(TMP_Text name, TMP_Text description)
+    public void displayUpgrade(TMP_Text name, TMP_Text description,string value)
     {
         name.text = upgradeName;
-        description.text = upgradeDescription;
+        description.text = upgradeDescription +" " +value;
     }
 }
 

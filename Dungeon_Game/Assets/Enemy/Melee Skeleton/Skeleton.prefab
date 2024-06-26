@@ -3794,7 +3794,7 @@ MonoBehaviour:
   health: 10
   damage: 5
   targetRange: 20
-  attackRange: 1.5
+  attackRange: 1
   moveSpeed: 2
   attackDamage: 5
   exp: 5

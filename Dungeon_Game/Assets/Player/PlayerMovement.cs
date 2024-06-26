@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool spellAniamtion = false;
     public bool throwSpell=false;
     public LayerMask mouseInputIgnoreLayers;
-    public SpellPrefab spell;
+    public SpellContainer spell;
     public float playerSpeed = 5;
     private Vector3 spellMousePos = Vector3.zero;
     public bool groundhit;
@@ -66,34 +66,47 @@ public class PlayerMovement : MonoBehaviour
         {
             if(spellAniamtion == false)
             {
-                SpellPrefab spell = spellContainer.spellPrefab;
-                if (Input.GetKeyDown(spellContainer.inputKey)&& playerManaManager.TryUseMana(spell.manaCost))
+                if (Input.GetKeyDown(spellContainer.inputKey)&& playerManaManager.TryUseMana(spellContainer.spellPrefab.manaCost))
                 {
-                    this.spell = spell;
+                    this.spell = spellContainer;
                     StartAttacke(mouseWorldPos);
                 }
             }
         }  
         if (throwSpell)
         {
-            if (spell.spellCastType == SpellCastType.PlayerPos)
+            if (spell.spellPrefab.spellCastType == SpellCastType.PlayerPos)
             {
-                GameObject go = Instantiate(spell.prefab, transform.position+spell.spawmPosition, transform.rotation*Quaternion.Euler(spell.spawmRotation));
+                GameObject go = Instantiate(spell.spellPrefab.prefab, transform.position+spell.spellPrefab.spawmPosition, transform.rotation*Quaternion.Euler(spell.spellPrefab.spawmRotation));
                 go.GetComponent<SpellDamage>().Damage += damage;
+                foreach(skillUpgrade skillUpgrade in spell.upgrades)
+                {
+                    go.AddComponent(System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType));
+                }
                 throwSpell = false;
                 spellAniamtion = false;
             }
-            if (spell.spellCastType == SpellCastType.ThrowPos)
+            if (spell.spellPrefab.spellCastType == SpellCastType.ThrowPos)
             {
-                GameObject go =Instantiate(spell.prefab, spellCastPoint.transform.position + spell.spawmPosition, transform.rotation * Quaternion.Euler(spell.spawmRotation));
+                GameObject go =Instantiate(spell.spellPrefab.prefab, spellCastPoint.transform.position + spell.spellPrefab.spawmPosition, transform.rotation * Quaternion.Euler(spell.spellPrefab.spawmRotation));
                 go.GetComponent<SpellDamage>().Damage += damage;
+                foreach (skillUpgrade skillUpgrade in spell.upgrades)
+                {
+                    System.Type script = System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType);
+                    go.AddComponent(script);
+                    go.GetComponent<SkillUpgradePrefab>().prefab = skillUpgrade.pefab;
+                }
                 throwSpell = false;
                 spellAniamtion = false;
             }
-            if (spell.spellCastType == SpellCastType.MousePos)
+            if (spell.spellPrefab.spellCastType == SpellCastType.MousePos)
             {
-                GameObject go = Instantiate(spell.prefab, spellMousePos + spell.spawmPosition, transform.rotation * Quaternion.Euler(spell.spawmRotation));
+                GameObject go = Instantiate(spell.spellPrefab.prefab, spellMousePos + spell.spellPrefab.spawmPosition, transform.rotation * Quaternion.Euler(spell.spellPrefab.spawmRotation));
                 go.GetComponent<SpellDamage>().Damage += damage;
+                foreach (skillUpgrade skillUpgrade in spell.upgrades)
+                {
+                    go.AddComponent(System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType));
+                }
                 throwSpell = false;
                 spellAniamtion = false;
             }
