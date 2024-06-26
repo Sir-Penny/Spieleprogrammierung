@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class SkillUpgradeManager : MonoBehaviour
 {
@@ -26,11 +27,11 @@ public class SkillUpgradeManager : MonoBehaviour
         }
         for (int i = 0; i < 3; i++)
         {
-            int r = Random.Range(0, playerUpgrades.Count);
+            int r = UnityEngine.Random.Range(0, playerUpgrades.Count);
             playerUpgradesContainer upgrade = playerUpgrades[r];
             upgrads[i].GetComponent<Button>().onClick.AddListener(() => OnClickUpgrade(upgrade));
-            upgrade.playerUpgrade.displayUpgrade(upgrads[i].transform.GetChild(0).GetComponent<TMP_Text>(), upgrads[i].transform.GetChild(1).GetComponent<TMP_Text>(),upgrade.value);
-            removedUpgrades[i]=upgrade;
+            upgrade.playerUpgrade.displayUpgrade(upgrads[i].transform.GetChild(0).GetComponent<TMP_Text>(), upgrads[i].transform.GetChild(1).GetComponent<TMP_Text>(), upgrade.value);
+            removedUpgrades[i] = upgrade;
             playerUpgrades.RemoveAt(r);
         }
         upgradsCanvas.SetActive(true);

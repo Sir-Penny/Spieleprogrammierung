@@ -21,3 +21,5 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 562fa825caf4da0499734bb4b8c6e7f1, type: 3}
   skillUpgrades:
   - {fileID: 11400000, guid: c2a69e4b9c297f84c8ed9c5edc8ab274, type: 2}
+  - {fileID: 11400000, guid: f2ce64ffd3610db48a9b0f12f8e04c21, type: 2}
+  - {fileID: 11400000, guid: 8476c49360dc000449d28b359a5eb95d, type: 2}

@@ -81,7 +81,9 @@ public class PlayerMovement : MonoBehaviour
                 go.GetComponent<SpellDamage>().Damage += damage;
                 foreach(skillUpgrade skillUpgrade in spell.upgrades)
                 {
-                    go.AddComponent(System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType));
+                    System.Type script = System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType);
+                    SkillUpgradePrefab skillUpgradePrefab = (SkillUpgradePrefab)go.AddComponent(script);
+                    skillUpgradePrefab.prefab = skillUpgrade.pefab;
                 }
                 throwSpell = false;
                 spellAniamtion = false;
@@ -93,8 +95,8 @@ public class PlayerMovement : MonoBehaviour
                 foreach (skillUpgrade skillUpgrade in spell.upgrades)
                 {
                     System.Type script = System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType);
-                    go.AddComponent(script);
-                    go.GetComponent<SkillUpgradePrefab>().prefab = skillUpgrade.pefab;
+                    SkillUpgradePrefab skillUpgradePrefab= (SkillUpgradePrefab)go.AddComponent(script);
+                    skillUpgradePrefab.prefab = skillUpgrade.pefab;
                 }
                 throwSpell = false;
                 spellAniamtion = false;
@@ -105,7 +107,9 @@ public class PlayerMovement : MonoBehaviour
                 go.GetComponent<SpellDamage>().Damage += damage;
                 foreach (skillUpgrade skillUpgrade in spell.upgrades)
                 {
-                    go.AddComponent(System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType));
+                    System.Type script = System.Reflection.Assembly.GetExecutingAssembly().GetType(skillUpgrade.scriptType);
+                    SkillUpgradePrefab skillUpgradePrefab = (SkillUpgradePrefab)go.AddComponent(script);
+                    skillUpgradePrefab.prefab = skillUpgrade.pefab;
                 }
                 throwSpell = false;
                 spellAniamtion = false;

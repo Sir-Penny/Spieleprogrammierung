@@ -5327,7 +5327,7 @@ GameObject:
   - component: {fileID: 1146185850}
   - component: {fileID: 1146185853}
   - component: {fileID: 1146185854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Stage 2 W\xFCste"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,4 +19,5 @@ MonoBehaviour:
   spawmRotation: {x: 0, y: 0, z: 0}
   manaCost: 10
   image: {fileID: 21300000, guid: 58bff2aae52c40d46925a2191ad00fab, type: 3}
-  skillUpgrades: []
+  skillUpgrades:
+  - {fileID: 11400000, guid: f2ce64ffd3610db48a9b0f12f8e04c21, type: 2}

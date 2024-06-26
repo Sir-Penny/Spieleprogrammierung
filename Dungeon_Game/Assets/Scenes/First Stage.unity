@@ -5771,7 +5771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: -136.36588}
+  m_AnchoredPosition: {x: -442.59998, y: 51.400024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287669973
@@ -7103,7 +7103,22 @@ MonoBehaviour:
   - playerUpgrade: {fileID: 11400000, guid: c2a69e4b9c297f84c8ed9c5edc8ab274, type: 2}
     spellid: 1
     value: Fire Ball
+  - playerUpgrade: {fileID: 11400000, guid: f2ce64ffd3610db48a9b0f12f8e04c21, type: 2}
+    spellid: 1
+    value: Fire Ball
+  - playerUpgrade: {fileID: 11400000, guid: 8476c49360dc000449d28b359a5eb95d, type: 2}
+    spellid: 1
+    value: Fire Ball
   - playerUpgrade: {fileID: 11400000, guid: 4c2bdedf72e795d45881bd6b1272c292, type: 2}
+    spellid: -1
+    value: 
+  - playerUpgrade: {fileID: 11400000, guid: 203a7579a88ce444484c2d7b669d47f1, type: 2}
+    spellid: -1
+    value: 
+  - playerUpgrade: {fileID: 11400000, guid: 1d7032e5fec6bfc4881b2196e387f601, type: 2}
+    spellid: -1
+    value: 
+  - playerUpgrade: {fileID: 11400000, guid: 101c6469720a535458ccf251e8a3948f, type: 2}
     spellid: -1
     value: 
   removedUpgrades:
@@ -8092,16 +8107,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &408178431
-Transform:
+--- !u!224 &408178431
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408178430}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 367.688, y: -294.13412, z: 9.072236}
+  m_LocalPosition: {x: 0, y: 0, z: 9.072236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8110,6 +8124,11 @@ Transform:
   - {fileID: 287669972}
   m_Father: {fileID: 193432277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -50, y: 50}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &411946553
 GameObject:
   m_ObjectHideFlags: 0
@@ -25160,7 +25179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: 0
-  maxexp: 20
+  maxexp: 5
   LevelUpWindow: {fileID: 365749033}
 --- !u!114 &1207459171
 MonoBehaviour:
@@ -34376,7 +34395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 20, y: -136.36588}
+  m_AnchoredPosition: {x: -342.59998, y: 51.400024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629083116
@@ -38868,7 +38887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 120, y: -136.36588}
+  m_AnchoredPosition: {x: -242.6, y: 51.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1782072351
@@ -48498,7 +48517,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2480041127744330596, guid: db91e983486f27f43b91d124f2a0f016, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3671886950287661515, guid: db91e983486f27f43b91d124f2a0f016, type: 3}
     m_AddedGameObjects: []
