@@ -14756,7 +14756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc80b68da0826404287d74285a4ab0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 20
   hitEnemys: []
 --- !u!135 &4433154690209761409
 SphereCollider:

@@ -8330,6 +8330,11 @@ PrefabInstance:
       propertyPath: gameWinUI
       value: 
       objectReference: {fileID: 1305346752}
+    - target: {fileID: 1968498241918250094, guid: d929d1b507278bd4bbb63efe31bc67c3,
+        type: 3}
+      propertyPath: attackDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5261169291279901429, guid: d929d1b507278bd4bbb63efe31bc67c3,
         type: 3}
       propertyPath: m_LocalPosition.x
