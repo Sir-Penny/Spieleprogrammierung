@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   playerUpgaredTypes: 2
-  upgradeName: add Damage
-  upgradeDescription: adds Damage
+  upgradeName: Attack Damage
+  upgradeDescription: Increases Attack Damage
   globalUpgradetyp: 1
   ammount: 5

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUpgaredTypes: 1
   upgradeName: Multiple Projectiles
-  upgradeDescription: 'fires 3 Projectils for spell:'
+  upgradeDescription: 'Fires 3 Projectiles of spells:'
   scriptType: MultipleProjectiles
   pefab: {fileID: 0}

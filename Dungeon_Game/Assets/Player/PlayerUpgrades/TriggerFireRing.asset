@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUpgaredTypes: 1
   upgradeName: Fire Ring On Hit
-  upgradeDescription: Fire Ring gets Triggert On hit with Spell;
+  upgradeDescription: 'Fire Ring gets triggered on hit with spell:'
   scriptType: TriggerSpellOnEnemyHit
   pefab: {fileID: 76331618001537767, guid: ae29936bdf908c147977868fa853a7e6, type: 3}

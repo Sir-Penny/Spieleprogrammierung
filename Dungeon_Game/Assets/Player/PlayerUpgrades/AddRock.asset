@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUpgaredTypes: 0
   upgradeName: Rock
-  upgradeDescription: you can now use a Rock
+  upgradeDescription: Drops Rock from the air
   skill: {fileID: 11400000, guid: d98e99a040e93b446a4665f673b53e44, type: 2}

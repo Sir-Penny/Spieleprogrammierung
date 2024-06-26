@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUpgaredTypes: 0
   upgradeName: Fire Ring
-  upgradeDescription: Adds Spell Fire Ring
+  upgradeDescription: Adds spell Fire Ring
   skill: {fileID: 11400000, guid: 0069e2b0e2afe984eaf3273f24ee3085, type: 2}

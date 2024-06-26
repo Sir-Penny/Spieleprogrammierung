@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HelathUpgrade
   m_EditorClassIdentifier: 
   playerUpgaredTypes: 2
-  upgradeName: add Health
-  upgradeDescription: add Healt
+  upgradeName: Total Health
+  upgradeDescription: Increases total Health
   globalUpgradetyp: 0
   ammount: 20
