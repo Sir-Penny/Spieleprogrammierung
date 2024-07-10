@@ -41,7 +41,7 @@ public class PlayerHealthManager : MonoBehaviour
         if (health <= 0)
         {
             gameObject.transform.GetComponent<Animator>().SetBool("Death", true);
-            gameObject.transform.parent.GetComponent<PlayerMovement>().enabled = false;
+            gameObject.transform.parent.GetComponent<PlayerManager>().enabled = false;
             Instantiate(gameLostmenu);
             Time.timeScale = 0;
         }

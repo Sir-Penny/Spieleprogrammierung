@@ -6,7 +6,7 @@ public class PlayerUpgradeManager : MonoBehaviour
 {
     public PlayerHealthManager playerHealthManager;
     public PlayerManaManager playerManaManager;
-    public PlayerMovement playerMovement;
+    public PlayerManager playerMovement;
     public void AddMaxHealth(float ammount)
     {
         playerHealthManager.health += ammount;

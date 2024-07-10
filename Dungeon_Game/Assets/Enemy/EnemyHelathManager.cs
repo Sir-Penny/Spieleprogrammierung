@@ -37,7 +37,7 @@ public class EnemyHelathManager : MonoBehaviour
         UpdateHelthBar();
         if (enemyStats.health <= 0)
         {
-            enemyRoot.GetComponent<EnemyMovement>().enabled = false;
+            enemyRoot.GetComponent<EnemyManager>().enabled = false;
             enemyRoot.GetComponent<NavMeshAgent>().isStopped = true;
             enemyRoot.GetComponent<NavMeshAgent>().enabled= false;
             Destroy(HelthBar);
@@ -45,9 +45,9 @@ public class EnemyHelathManager : MonoBehaviour
             enemyRoot.GetComponent<CapsuleCollider>().enabled = false;
             animator.SetBool("Death", true);
             this.enabled = false;
-            for (int i = 0; i < enemyRoot.GetComponent<EnemyMovement>().AttackCollider.Length; i++)
+            for (int i = 0; i < enemyRoot.GetComponent<EnemyManager>().AttackCollider.Length; i++)
             {
-                enemyRoot.GetComponent<EnemyMovement>().AttackCollider[i].enabled = false;
+                enemyRoot.GetComponent<EnemyManager>().AttackCollider[i].enabled = false;
             }
             enemyStats.target.GetComponent<PlayerEnemyDeathManager>().AddOnEnemyDeath(enemyStats.exp);
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAnimationEvents : MonoBehaviour
 {
     public Animator animator;
-    public EnemyMovement enemyMovement;
+    public EnemyManager enemyMovement;
     public void FireAttack()
     {
         enemyMovement.fireAttack = true;

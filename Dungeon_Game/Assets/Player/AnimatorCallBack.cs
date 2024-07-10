@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimatorCallBack : MonoBehaviour
 {
     private Animator animator;
-    public PlayerMovement playerMovement;
+    public PlayerManager playerMovement;
 
     void Start()
     {
